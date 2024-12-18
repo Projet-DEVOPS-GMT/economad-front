@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import LoginPage from '../views/LoginPage.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import LoginPage from '../views/LoginPage.vue'
 
 const routes = [
   {
@@ -7,11 +7,12 @@ const routes = [
     name: 'Login',
     component: LoginPage
   },
-  {
-    path: '/test',
-    component: { template: '<h1>Test Page</h1>' } // Une page simple pour tester le routage
-  }
-];
+  // Ajoute d'autres routes si nécessaire
+]
 
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
 
-export default router;
+export default router
