@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import SomeComponent from '../views/SomeComponent.vue';
+import LoginPage from '../views/LoginPage.vue';
 
 const routes = [
   {
-    path: '/',
-    name: 'SomeComponent',
-    component: SomeComponent,
+    path: '/login',
+    name: 'Login',
+    component: LoginPage
   },
+  {
+    path: '/test',
+    component: { template: '<h1>Test Page</h1>' } // Une page simple pour tester le routage
+  }
 ];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
 
 export default router;
