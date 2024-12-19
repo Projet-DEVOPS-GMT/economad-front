@@ -46,6 +46,15 @@
         </div>
       </div>
     </section>
+
+    <!-- Section de boutons pour les pages des features -->
+    <section class="cta-section">
+      <div class="cta-buttons">
+        <router-link to="/comparateur" class="btn-secondary">Comparateur des voyages économiques et éco-responsables</router-link>
+        <router-link to="/historique" class="btn-secondary">Mon historique voyage</router-link>
+      </div>
+    </section>
+
   </div>
 </template>
 
@@ -200,5 +209,32 @@ export default {
 .feature p {
   font-size: 1rem;
   color: #666;
+}
+
+/* Section de boutons */
+.cta-section {
+  background-color: #f3f3f3;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
 }
 </style>
