@@ -1,5 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import LoginPage from '../views/LoginPage.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import LoginPage from '../views/LoginPage.vue';
+import Home from '../views/Home.vue';
+import RegisterPage from '../views/RegisterPage.vue'; // Importer la nouvelle page d'inscription
 
 const routes = [
   {
@@ -7,12 +9,21 @@ const routes = [
     name: 'Login',
     component: LoginPage
   },
-  // Ajoute d'autres routes si nécessaire
-]
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterPage,  // Nouvelle route pour la page d'inscription
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
 
-export default router
+export default router;
