@@ -18,7 +18,7 @@
       <div class="main-content">
         <h1>Bienvenue sur <span class="highlight">ECONOMAD</span></h1>
         <p>Explorez des voyages low-cost, tout en réduisant votre empreinte carbone.</p>
-        <router-link to="/login" class="btn-primary">Se connecter</router-link>
+        <router-link to="/recherche" class="btn-primary">Rechercher voyage</router-link>
       </div>
       <div class="main-image">
         <img src="@/assets/travel-eco-friendly.jpg" alt="Voyage éco-responsable" />
@@ -50,7 +50,6 @@
     <!-- Section de boutons pour les pages des features -->
     <section class="cta-section">
       <div class="cta-buttons">
-        <router-link to="/comparateur" class="btn-secondary">Comparateur des voyages économiques et éco-responsables</router-link>
         <router-link to="/historique" class="btn-secondary">Mon historique voyage</router-link>
       </div>
     </section>
@@ -130,7 +129,7 @@ export default {
 }
 
 .main-content h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   color: #333;
 }
 
@@ -173,7 +172,7 @@ export default {
 }
 
 .features-section h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 30px;
   color: #333;
 }
