@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginPage from '../views/LoginPage.vue';
 import Home from '../views/Home.vue';
-import RegisterPage from '../views/RegisterPage.vue'; // Importer la nouvelle page d'inscription
-import Comparateur from '../views/Comparateur.vue'; // Vue du comparateur
+import RegisterPage from '../views/RegisterPage.vue'; // Importer la page d'inscription
+import Comparaison from '../views/Comparaison.vue'; // Vue du comparateur
 import Historique from '../views/Historique.vue'; // Vue de l'historique
+import Recherche from '../views/Recherche.vue'; // Importer Recherche 
 
 const routes = [
   {
@@ -22,16 +23,20 @@ const routes = [
     component: RegisterPage,  
   },
   {
-    path: '/comparateur',
-    name: 'Comparateur',
-    component: Comparateur,
+    path: '/comparaison',
+    name: 'Comparaison',
+    component: Comparaison,
   },
   {
     path: '/historique',
     name: 'Historique',
-    component: () => import('@/views/Historique.vue'),
+    component: Historique,
   },
-  
+  {
+    path: '/recherche',
+    name: 'Recherche',
+    component: Recherche,  // Assurez-vous que ce fichier est bien utilisé
+  }
 ];
 
 const router = createRouter({
