@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LoginPage from '../views/LoginPage.vue';
 import Home from '../views/Home.vue';
 import RegisterPage from '../views/RegisterPage.vue';
-import Comparaison from '../views/Comparaison.vue'; // Vue du comparateur
 import Historique from '../views/Historique.vue'; // Vue de l'historique
 import EnregistrerConsommation from '../views/EnregistrerConsommation.vue'; // Vue pour l'enregistrement de la consommation
 import Recherche from '../views/Recherche.vue'; // Import de la vue Recherche
