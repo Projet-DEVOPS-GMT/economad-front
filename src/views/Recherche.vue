@@ -1,43 +1,40 @@
 <template>
-  <div>
+  <div class="recherche-container">
+    <h1>Rechercher un voyage</h1>
+
     <!-- Formulaire de recherche -->
-    <div class="recherche-container">
-      <h1>Rechercher un voyage</h1>
-
-      <div class="search-form">
-        <div class="input-group">
-          <label for="ville-depart">Ville de départ</label>
-          <input v-model="villeDepart" type="text" id="ville-depart" placeholder="Entrez la ville de départ" />
-        </div>
-
-        <div class="input-group">
-          <label for="ville-destination">Ville de destination</label>
-          <input v-model="villeDestination" type="text" id="ville-destination" placeholder="Entrez la ville de destination" />
-        </div>
-
-        <div class="input-group">
-          <label for="date-depart">Date de départ</label>
-          <input v-model="dateDepart" type="date" id="date-depart" />
-        </div>
-
-        <div class="input-group">
-          <label for="date-retour">Date de retour</label>
-          <input v-model="dateRetour" type="date" id="date-retour" />
-        </div>
-
-        <button @click="fetchVoyages" class="btn-recherche">Rechercher</button>
+    <div class="search-form">
+      <div class="input-group">
+        <label for="ville-depart">Ville de départ</label>
+        <input v-model="villeDepart" type="text" id="ville-depart" placeholder="Entrez la ville de départ" />
       </div>
+
+      <div class="input-group">
+        <label for="ville-destination">Ville de destination</label>
+        <input v-model="villeDestination" type="text" id="ville-destination" placeholder="Entrez la ville de destination" />
+      </div>
+
+      <div class="input-group">
+        <label for="date-depart">Date de départ</label>
+        <input v-model="dateDepart" type="date" id="date-depart" />
+      </div>
+
+      <div class="input-group">
+        <label for="date-retour">Date de retour</label>
+        <input v-model="dateRetour" type="date" id="date-retour" />
+      </div>
+
+      <button @click="fetchVoyages" class="btn-recherche">Rechercher</button>
     </div>
 
-    <!-- Affichage des options de transport après recherche -->
+    <!-- Affichage des résultats -->
     <div v-if="transports.length" class="comparaison-container">
-      <h1>Comparer les options de transport</h1>
-
-      <!-- Affichage des filtres -->
       <div class="filters">
-        <button @click="sortBy('price')" :class="{ active: sortCriteria === 'price' }">Filtrer par prix</button>
-        <button @click="sortBy('duration')" :class="{ active: sortCriteria === 'duration' }">Filtrer par rapidité</button>
-        <button @click="sortBy('co2')" :class="{ active: sortCriteria === 'co2' }">Filtrer par émissions CO₂</button>
+        <select @change="sortBy($event.target.value)">
+          <option value="price">Filtrer par prix</option>
+          <option value="duration">Filtrer par rapidité</option>
+          <option value="co2">Filtrer par émissions CO₂</option>
+        </select>
       </div>
 
       <!-- Affichage des options de transport -->
@@ -49,17 +46,13 @@
           <p><strong>Émissions CO₂ :</strong> {{ transport.tauxCO2 }} kg</p>
         </div>
       </div>
-
-      <div v-else>
-        <p>Aucune option de transport disponible.</p>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
+import apiClient from '../apiClient';  // Assurez-vous que le chemin d'importation est correct
 
-import apiClient from '../apiClient';  
 export default {
   data() {
     return {
@@ -67,7 +60,7 @@ export default {
       villeDestination: '',
       dateDepart: '',
       dateRetour: '',
-      transports: [],  
+      transports: [],
       sortCriteria: 'price',
     };
   },
@@ -91,7 +84,6 @@ export default {
         return;
       }
       try {
-        //  récupérer les voyages avec les paramètres
         const response = await apiClient.get('/transports/compare-transport', {
           params: {
             depart: this.villeDepart,
@@ -100,15 +92,12 @@ export default {
             dateRetour: this.dateRetour,
           },
         });
-
-        // Stocker les résultats dans le tableau transports
         this.transports = response.data;
       } catch (error) {
         console.error('Erreur lors de la récupération des voyages', error);
       }
     },
     sortBy(criteria) {
-      // Changer le critère de tri
       this.sortCriteria = criteria;
     },
   },
@@ -128,15 +117,17 @@ h1 {
 
 .search-form {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 1rem;
-  max-width: 600px;
+  flex-wrap: wrap;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
+  width: 48%;
 }
 
 label {
@@ -148,7 +139,7 @@ input {
   padding: 0.8rem;
   font-size: 1rem;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #4CAF50; /* Bordure verte */
 }
 
 button {
@@ -160,6 +151,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 1rem;
+  width: 100%;
 }
 
 button:hover {
@@ -167,28 +159,17 @@ button:hover {
 }
 
 .comparaison-container {
-  padding: 2rem;
+  margin-top: 2rem;
 }
 
-.filters {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.filters button {
-  background-color: #007bff;
+.filters select {
+  background-color: #4caf50;
   color: white;
-  padding: 0.5rem 1rem;
-  border: none;
+  font-size: 1.1rem;
+  padding: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.filters button.active {
-  background-color: #0056b3;
+  margin-bottom: 1rem;
 }
 
 .transport-cards {
