@@ -23,11 +23,6 @@ const routes = [
     component: RegisterPage, // Page d'inscription
   },
   {
-    path: '/comparaison',
-    name: 'Comparaison',
-    component: Comparaison, // Comparaison des transports
-  },
-  {
     path: '/historique',
     name: 'Historique',
     component: Historique, // Historique des trajets de l'utilisateur
