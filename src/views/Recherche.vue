@@ -31,9 +31,8 @@
     <div v-if="voyages.length" class="voyages-list">
       <div v-for="voyage in voyages" :key="voyage.id" class="voyage-card">
         <h3>{{ voyage.ville_depart }} → {{ voyage.ville_destination }}</h3>
-        <p>Date de départ : {{ voyage.date_depart }}</p>
-        <p>Prix : {{ voyage.prix }} €</p>
-        <p>Émissions CO₂ : {{ voyage.co2 }} kg</p>
+        <p>💰 Coût total : {{ voyage.estimationPrix }} €</p>
+        <p>🌱 Émissions CO₂ : {{ voyage.tauxCO2 }} kg</p>
       </div>
     </div>
 
@@ -63,12 +62,10 @@ export default {
         return;
       }
       try {
-        const response = await apiClient.get('/api/voyages/recherche', {
+        const response = await apiClient.get('/transports/compare-transport', {
           params: {
             depart: this.villeDepart,
             destination: this.villeDestination,
-            date_depart: this.dateDepart,
-            date_retour: this.dateRetour,
           },
         });
         this.voyages = response.data;

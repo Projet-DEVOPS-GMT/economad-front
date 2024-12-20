@@ -10,6 +10,15 @@
         <router-link to="/login" class="nav-item">Se connecter</router-link>
         <router-link to="/register" class="nav-item">S'inscrire</router-link>
         <router-link to="/profile" class="nav-link">Mon profil</router-link>
+
+        <!-- Menu déroulant avec deux boutons -->
+        <div class="dropdown">
+          <button class="dropbtn">Consommations</button>
+          <div class="dropdown-content">
+            <router-link to="/enregistrer-consommation" class="nav-item">Enregistrer une consommation</router-link>
+            <router-link to="/historique" class="nav-item">Afficher historique</router-link>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -25,7 +34,7 @@
       </div>
     </section>
 
-    <!-- Section de fonctionnalités -->
+    
     <section class="features-section">
       <h2>Pourquoi choisir ECONOMAD ?</h2>
       <div class="features">
@@ -46,14 +55,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Section de boutons pour les pages des features -->
-    <section class="cta-section">
-      <div class="cta-buttons">
-        <router-link to="/historique" class="btn-secondary">Mon historique voyage</router-link>
-      </div>
-    </section>
-
   </div>
 </template>
 
@@ -96,20 +97,71 @@ export default {
 
 .nav-bar {
   display: flex;
+  align-items: center; 
 }
 
-.nav-item {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
+
+.nav-item,
+.nav-link {
+  color: white ; 
+  text-decoration: none; 
   font-weight: bold;
   padding: 5px 10px;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.nav-item:hover,
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Effet de survol */
+  color: white; 
+}
+
+
+/* Menu déroulant */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #45a049;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-item {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: black;
 }
 
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #ddd;
 }
 
 /* Section principale */
@@ -164,7 +216,7 @@ export default {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Section de fonctionnalités */
+
 .features-section {
   background-color: #ffffff;
   padding: 40px 20px;

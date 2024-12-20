@@ -20,7 +20,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await apiClient.get('/endpoint'); // Change `/endpoint` par l'endpoint réel de ton backend Spring Boot
+        const response = await apiClient.get('/endpoint'); 
         this.data = response.data;
       } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);

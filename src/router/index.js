@@ -1,41 +1,47 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginPage from '../views/LoginPage.vue';
 import Home from '../views/Home.vue';
-import RegisterPage from '../views/RegisterPage.vue'; // Importer la page d'inscription
+import RegisterPage from '../views/RegisterPage.vue';
 import Comparaison from '../views/Comparaison.vue'; // Vue du comparateur
 import Historique from '../views/Historique.vue'; // Vue de l'historique
-import Recherche from '../views/Recherche.vue'; // Importer Recherche 
+import EnregistrerConsommation from '../views/EnregistrerConsommation.vue'; // Vue pour l'enregistrement de la consommation
+import Recherche from '../views/Recherche.vue'; // Import de la vue Recherche
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: LoginPage
+    path: '/',
+    name: 'Home',
+    component: Home, // La page d'accueil
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home,
+    path: '/login',
+    name: 'Login',
+    component: LoginPage, // Page de connexion
   },
   {
     path: '/register',
     name: 'Register',
-    component: RegisterPage,  
+    component: RegisterPage, // Page d'inscription
   },
   {
     path: '/comparaison',
     name: 'Comparaison',
-    component: Comparaison,
+    component: Comparaison, // Comparaison des transports
   },
   {
     path: '/historique',
     name: 'Historique',
-    component: Historique,
+    component: Historique, // Historique des trajets de l'utilisateur
+  },
+  {
+    path: '/enregistrer-consommation',
+    name: 'EnregistrerConsommation',
+    component: EnregistrerConsommation, // Formulaire pour enregistrer une consommation
   },
   {
     path: '/recherche',
     name: 'Recherche',
-    component: Recherche,  // Assurez-vous que ce fichier est bien utilisé
+    component: Recherche, // Vue de recherche
   }
 ];
 
