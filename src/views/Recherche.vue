@@ -30,7 +30,8 @@
     <!-- Affichage des résultats -->
     <div v-if="voyages.length" class="voyages-list">
       <div v-for="voyage in voyages" :key="voyage.id" class="voyage-card">
-        <h3>{{ voyage.ville_depart }} → {{ voyage.ville_destination }}</h3>
+        <h3>{{ voyage.typeTransport }}</h3>
+        <h3>{{ voyage.villeDepart }} → {{ voyage.villeDestination }}</h3>
         <p>💰 Coût total : {{ voyage.estimationPrix }} €</p>
         <p>🌱 Émissions CO₂ : {{ voyage.tauxCO2 }} kg</p>
       </div>
@@ -66,9 +67,12 @@ export default {
           params: {
             depart: this.villeDepart,
             destination: this.villeDestination,
+            dateDepart: this.dateDepart,
+            dateRetour: this.dateRetour
           },
         });
         this.voyages = response.data;
+        console.log(this.voyage);
       } catch (error) {
         console.error('Erreur lors de la récupération des voyages', error);
       }

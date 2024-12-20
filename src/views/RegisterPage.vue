@@ -25,8 +25,7 @@
 </template>
 
 <script>
-import api from '../router/axios';  // Importation de la configuration Axios
-
+import apiClient from '../apiClient';
 export default {
   data() {
     return {
@@ -37,13 +36,35 @@ export default {
     };
   },
   methods: {
+    validateForm() {
+      if (!this.email || !this.password) {
+        alert("Tous les champs doivent être remplis.");
+        return false;
+      }
+    
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!emailRegex.test(this.email)) {
+        alert("L'email n'est pas valide.");
+        return false;
+      }
+     
+      if (this.password.length < 5) {
+        alert("Le mot de passe doit contenir au moins 6 caractères.");
+        return false;
+      }
+      return true;
+    },
     async registerUser() {
+      if (!this.validateForm()) {
+        return;  
+      }
+
       try {
-        const response = await api.post('/register', {
-          firstName: this.firstName,
-          lastName: this.lastName,
+        const response = await apiClient.post('/users', {
+          prenom: this.firstName,
+          nom: this.lastName,
           email: this.email,
-          password: this.password,
+          motDePasse: this.password,
         });
 
         // Si l'inscription est réussie, rediriger l'utilisateur vers la page de connexion
