@@ -30,7 +30,7 @@
         <router-link to="/recherche" class="btn-primary">Rechercher voyage</router-link>
       </div>
       <div class="main-image">
-        <img src="@/assets/travel-eco-friendly.jpg" alt="Voyage éco-responsable" />
+        <img src="@/assets/image4.png" alt="Voyage éco-responsable" />
       </div>
     </section>
 
@@ -39,17 +39,17 @@
       <h2>Pourquoi choisir ECONOMAD ?</h2>
       <div class="features">
         <div class="feature">
-          <img src="@/assets/low-cost.png" alt="Low-cost" class="feature-icon" />
+          <img src="@/assets/image3.png" alt="Low-cost" class="feature-icon" />
           <h3>Voyages économiques</h3>
           <p>Profitez des meilleures offres pour voyager à moindre coût.</p>
         </div>
         <div class="feature">
-          <img src="@/assets/eco-friendly.png" alt="Eco-friendly" class="feature-icon" />
+          <img src="@/assets/image1.png" alt="Eco-friendly" class="feature-icon" />
           <h3>Respect de la planète</h3>
           <p>Réduisez votre empreinte carbone grâce à nos solutions.</p>
         </div>
         <div class="feature">
-          <img src="@/assets/easy-booking.png" alt="Facile" class="feature-icon" />
+          <img src="@/assets/image2.png" alt="Facile" class="feature-icon" />
           <h3>Réservation simplifiée</h3>
           <p>Organisez vos voyages rapidement et sans stress.</p>
         </div>
@@ -210,7 +210,7 @@ export default {
 }
 
 .main-image img {
-  max-width: 100%;
+  max-width: 40%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
