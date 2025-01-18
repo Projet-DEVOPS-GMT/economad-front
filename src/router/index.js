@@ -5,6 +5,7 @@ import RegisterPage from '../views/RegisterPage.vue';
 import Historique from '../views/Historique.vue'; // Vue de l'historique
 import EnregistrerConsommation from '../views/EnregistrerConsommation.vue'; // Vue pour l'enregistrement de la consommation
 import Recherche from '../views/Recherche.vue'; // Import de la vue Recherche
+import FaireScore from '../views/FaireScore.vue'; //Import de la vue FaireScore
 
 const routes = [
   {
@@ -36,7 +37,12 @@ const routes = [
     path: '/recherche',
     name: 'Recherche',
     component: Recherche, // Vue de recherche
-  }
+  },
+  {
+    path: '/faire-score',
+    name: 'faire-score',
+    component: FaireScore
+  },
 ];
 
 const router = createRouter({
