@@ -2,41 +2,19 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LoginPage from '../views/LoginPage.vue';
 import Home from '../views/Home.vue';
 import RegisterPage from '../views/RegisterPage.vue';
-import Historique from '../views/Historique.vue'; // Vue de l'historique
-import EnregistrerConsommation from '../views/EnregistrerConsommation.vue'; // Vue pour l'enregistrement de la consommation
-import Recherche from '../views/Recherche.vue'; // Import de la vue Recherche
+import Historique from '../views/Historique.vue';
+import EnregistrerConsommation from '../views/EnregistrerConsommation.vue';
+import Recherche from '../views/Recherche.vue';
+import Hebergement from '../views/Hebergement.vue';  // Import de la page Hebergement
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home, // La page d'accueil
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginPage, // Page de connexion
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: RegisterPage, // Page d'inscription
-  },
-  {
-    path: '/historique',
-    name: 'Historique',
-    component: Historique, // Historique des trajets de l'utilisateur
-  },
-  {
-    path: '/enregistrer-consommation',
-    name: 'EnregistrerConsommation',
-    component: EnregistrerConsommation, // Formulaire pour enregistrer une consommation
-  },
-  {
-    path: '/recherche',
-    name: 'Recherche',
-    component: Recherche, // Vue de recherche
-  }
+  { path: '/', name: 'Home', component: Home },
+  { path: '/login', name: 'Login', component: LoginPage },
+  { path: '/register', name: 'Register', component: RegisterPage },
+  { path: '/historique', name: 'Historique', component: Historique },
+  { path: '/enregistrer-consommation', name: 'EnregistrerConsommation', component: EnregistrerConsommation },
+  { path: '/recherche', name: 'Recherche', component: Recherche },
+  { path: '/hebergement', name: 'Hebergement', component: Hebergement }  // Nouvelle route pour la page d'hébergement
 ];
 
 const router = createRouter({
