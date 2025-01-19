@@ -18,7 +18,7 @@
       <!-- Affichage des hébergements -->
       <div v-if="hebergements.length" class="hebergement-list">
         <div v-for="hebergement in hebergements" :key="hebergement.id" class="hebergement-card">
-          <img :src="hebergement.photo" alt="Hébergement" class="hebergement-image" />
+          <img :src="`${hebergement.photo}.jpg`" alt="Hébergement" class="hebergement-image" />
           <div class="hebergement-info">
             <h3>{{ hebergement.typeHebergement }}</h3>
             <p>{{ hebergement.description }}</p>
