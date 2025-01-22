@@ -9,7 +9,7 @@
       <nav class="nav-bar">
         <router-link to="/login" class="nav-item">Se connecter</router-link>
         <router-link to="/register" class="nav-item">S'inscrire</router-link>
-        <router-link to="/profile" class="nav-link">Mon profil</router-link>
+        <router-link to="/profile" class="nav-item">Mon profil</router-link>
 
         <!-- Menu déroulant avec deux boutons -->
         <div class="dropdown">
@@ -142,7 +142,7 @@ export default {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: #45a049;
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -157,12 +157,11 @@ export default {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  color: black;
 }
 
-.nav-item:hover {
+/* .nav-item:hover {
   background-color: #ddd;
-}
+} */
 
 /* Section principale */
 .main-section {

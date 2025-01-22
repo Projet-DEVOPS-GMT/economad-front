@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input v-model="email" type="email" id="email" placeholder="Email" required />
+        <input v-model="username" type="email" id="email" placeholder="Email" required />
       </div>
       <div class="form-group">
         <label for="password">Mot de passe</label>
@@ -31,19 +31,19 @@ export default {
     return {
       firstName: '',
       lastName: '',
-      email: '',
+      username: '',
       password: '',
     };
   },
   methods: {
     validateForm() {
-      if (!this.email || !this.password) {
+      if (!this.username || !this.password) {
         alert("Tous les champs doivent être remplis.");
         return false;
       }
     
       const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-      if (!emailRegex.test(this.email)) {
+      if (!emailRegex.test(this.username)) {
         alert("L'email n'est pas valide.");
         return false;
       }
@@ -63,8 +63,8 @@ export default {
         const response = await apiClient.post('/users', {
           prenom: this.firstName,
           nom: this.lastName,
-          email: this.email,
-          motDePasse: this.password,
+          username: this.username,
+          password: this.password,
         });
 
         // Si l'inscription est réussie, rediriger l'utilisateur vers la page de connexion

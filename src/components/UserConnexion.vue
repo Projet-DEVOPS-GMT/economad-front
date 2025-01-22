@@ -1,4 +1,3 @@
-import api from '../router/axios';
 
 <template>
   <div class="login-container">
@@ -6,7 +5,7 @@ import api from '../router/axios';
     <form @submit.prevent="loginUser">
       <div class="form-group">
         <label for="email">Email</label>
-        <input v-model="email" type="email" id="email" placeholder="Email" required />
+        <input v-model="username" type="email" id="email" placeholder="Email" required />
       </div>
       <div class="form-group">
         <label for="password">Mot de passe</label>
@@ -19,28 +18,35 @@ import api from '../router/axios';
 </template>
 
 <script>
-import api from '../router/axios';  // Importation de la configuration Axios
+import apiClient from '../apiClient';
 
 export default {
   data() {
     return {
-      email: '',
+      username: '',
       password: '',
     };
   },
   methods: {
    async loginUser() {
   try {
-    const response = await api.post('/login', {
-      email: this.email,
+    const response = await apiClient.post('/users/login', {
+      username: this.username,
       password: this.password,
     });
 
-    // Stocker le token JWT dans localStorage
+ 
+    localStorage.setItem('auth-token', response.data.token);
     localStorage.setItem('auth-token', response.data.token);
 
-    // Rediriger vers une page protégée (par exemple, tableau de bord)
-    this.$router.push('/dashboard');
+      localStorage.setItem('user-id', response.data.id);
+
+    this.$router.push('/');
+
+
+    console.log(localStorage.getItem('auth-token')); 
+    console.log(localStorage.getItem('user-id'));
+
   } catch (error) {
     console.error('Erreur lors de la connexion', error);
     if (error.response) {
