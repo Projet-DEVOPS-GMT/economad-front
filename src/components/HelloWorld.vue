@@ -20,7 +20,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await apiClient.get('/endpoint'); 
+        const response = await apiClient.get('/endpoint'); gradle 
         this.data = response.data;
       } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);
