@@ -9,9 +9,8 @@
       <nav class="nav-bar">
         <router-link to="/login" class="nav-item">Se connecter</router-link>
         <router-link to="/register" class="nav-item">S'inscrire</router-link>
+        <router-link to="/faire-score" class="nav-item">Faire Score</router-link>
         <router-link to="/profile" class="nav-link">Mon profil</router-link>
-
-        <!-- Menu déroulant avec deux boutons -->
         <div class="dropdown">
           <button class="dropbtn">Consommations</button>
           <div class="dropdown-content">

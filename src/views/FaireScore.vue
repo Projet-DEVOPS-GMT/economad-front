@@ -9,46 +9,47 @@
       <button @click="fetchEcoScore" class="btn btn-primary">Obtenir le Score</button>
     </div>
 
-    <!-- Affichage des informations de la ville et du score -->
-    <div v-if="ecoScore !== null">
-      <div v-if="villeDetails">
-        <h2>{{ villeDetails.nom }}</h2>
-        <p><strong>Population:</strong> {{ villeDetails.population }}</p>
-        <p><strong>PIB:</strong> {{ villeDetails.pib }}</p>
-        <p><strong>Taux CO₂:</strong> {{ villeDetails.tauxCo2 }}</p>
+      <div v-show="hasScore">
+        <h2>{{ nom }}</h2>
+        <p><strong>Population:</strong> {{ population }}</p>
+        <p><strong>PIB:</strong> {{ pib }}</p>
+        <p><strong>Taux CO₂:</strong> {{ tauxCo2 }}</p>
         <p><strong>Score Écologique:</strong> {{ ecoScore }}</p>
       </div>
-      <div v-else>
-        <p>Aucune ville trouvée avec cet ID.</p>
-      </div>
-    </div>
+
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import apiClient from "../apiClient";
 
 export default {
   data() {
     return {
       cityId: null,          // ID de la ville saisi par l'utilisateur
       ecoScore: null,        // Score écologique calculé
-      villeDetails: null     // Détails de la ville récupérés
+      nom: null,     // Détails de la ville récupérés
+      population: null,
+      pib: null,
+      ecoScorer: null,
+      hasScore: false,
     };
   },
   methods: {
     // Fonction pour récupérer le score écologique de la ville
     async fetchEcoScore() {
       try {
-        const response = await axios.get(`http://localhost:8080/api/villes/${this.cityId}/eco-score`);
-        if (response.status === 200) {
-          // Réponse avec le score écologique
+        const response = await apiClient.get(`http://localhost:8080/api/villes/${this.cityId}/eco-score`);
+        console.log("Réponse API : ", response);
+        if (response.status === 200 && response.data) {
+       
           this.ecoScore = response.data.score;
-          this.villeDetails = response.data.details;
-        } else {
-          // Si la ville n'est pas trouvée
-          this.ecoScore = null;
-          this.villeDetails = null;
+          this.villeDetails = response.data.details; // Details sont maintenant directement accessibles
+          this.nom = response.data.nom;    // Détails de la ville récupérés
+          this.population = response.data.population;
+          this.pib= response.data.pib;
+          this.ecoScorer = response.data.ecoScorer;
+          this.hasScore = true;
         }
       } catch (error) {
         console.error("Erreur lors de la récupération du score écologique", error);
