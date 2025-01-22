@@ -29,8 +29,7 @@ body {
   align-items: center;
 }
 
-.nav-item,
-.nav-link {
+.nav-item {
   color: white; 
   text-decoration: none; 
   font-weight: bold;
@@ -39,13 +38,10 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.nav-item:hover,
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Survol des éléments */
-}
+
 
 /* Menu déroulant */
-.dropdown-content {
+.dropdown {
   background-color: #4CAF50;
 }
 
