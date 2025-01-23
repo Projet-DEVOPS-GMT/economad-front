@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!-- En-tête -->
     <header class="header">
       <div class="logo">
         <img src="@/assets/logo.png" alt="ECONOMAD Logo" class="logo-img" />
@@ -11,7 +10,6 @@
         <router-link to="/register" class="nav-item">S'inscrire</router-link>
         <router-link to="/profile" class="nav-item">Mon profil</router-link>
 
-        <!-- Menu déroulant avec deux boutons -->
         <div class="dropdown">
           <button class="dropbtn">Consommations</button>
           <div class="dropdown-content">
@@ -22,7 +20,6 @@
       </nav>
     </header>
 
-    <!-- Section principale -->
     <section class="main-section">
       <div class="main-content">
         <h1>Bienvenue sur <span class="highlight">ECONOMAD</span></h1>
@@ -34,7 +31,9 @@
       </div>
     </section>
 
-    
+    <!-- Ajout de la section d'hébergement -->
+    <Hebergement />
+
     <section class="features-section">
       <h2>Pourquoi choisir ECONOMAD ?</h2>
       <div class="features">
@@ -59,8 +58,13 @@
 </template>
 
 <script>
+import Hebergement from './Hebergement.vue';
+
 export default {
   name: 'Home',
+  components: {
+    Hebergement
+  }
 };
 </script>
 
