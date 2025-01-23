@@ -35,8 +35,6 @@ export default {
       password: this.password,
     });
 
- 
-    localStorage.setItem('auth-token', response.data.token);
     localStorage.setItem('auth-token', response.data.token);
 
       localStorage.setItem('user-id', response.data.id);
