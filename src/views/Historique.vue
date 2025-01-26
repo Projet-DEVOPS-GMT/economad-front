@@ -1,42 +1,43 @@
 <template>
   <div class="historique-container">
-    <!-- Header Section with Image -->
-    <div class="historique-header-section">
-      <img src="@/assets/easy-booking.png" alt="Historique" class="header-image" />
-      <div class="header-text">
-        <h1>Historique des consommations</h1>
-      </div>
-    </div>
-
-    <!-- Main Content -->
-    <div v-if="consommations.length" class="historique-content">
-      <div class="historique-cards">
-        <!-- Display each consumption as a card -->
-        <div class="historique-card" v-for="item in consommations" :key="item.id">
-          <div class="card-header">
-            <h3>{{ item.type }} - {{ item.ville }}</h3>
-            <p class="card-dates">{{ item.dateDepart }} - {{ item.dateArrivee }}</p>
-          </div>
-          <div class="card-body">
-            <p><strong>Montant:</strong> {{ item.montant }} €</p>
-            <p><strong>Émissions CO₂:</strong> {{ item.co2 }} kg</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="total-emissions">
-        <h3>Total des émissions CO₂ : {{ totalCO2 }} kg</h3>
-      </div>
-    </div>
-
-    <div v-else class="no-consommations">
-      <p>Aucune consommation enregistrée.</p>
+  <!-- Header Section with Image -->
+  <div class="historique-header-section">
+    <img src="@/assets/easy-booking.png" alt="Historique" class="header-image" />
+    <div class="header-text">
+      <h1>Historique des consommations</h1>
     </div>
   </div>
+
+  <!-- Main Content -->
+  <div v-if="consommations.length" class="historique-content">
+    <div class="historique-cards">
+      <!-- Display each consumption as a card -->
+      <div class="historique-card" v-for="item in consommations" :key="item.id">
+        <div class="card-header">
+          <h3>{{ item.type }} - {{ item.ville }}</h3>
+          <p class="card-dates">{{ item.dateDepart }} - {{ item.dateArrivee }}</p>
+        </div>
+        <div class="card-body">
+          <p><strong>Montant:</strong> {{ item.montant }} €</p>
+          <p><strong>Émissions CO₂:</strong> {{ item.co2 }} kg</p> <!-- Affichage de l'émission CO₂ -->
+        </div>
+      </div>
+    </div>
+
+    <div class="total-emissions">
+      <h3>Total des émissions CO₂ : {{ totalCO2 }} kg</h3>
+    </div>
+  </div>
+
+  <div v-else class="no-consommations">
+    <p>Aucune consommation enregistrée.</p>
+  </div>
+</div>
+
 </template>
 
 <script>
-import apiClient from '@/apiClient';
+import apiClient from '../apiClient';
 
 export default {
   data() {
@@ -50,16 +51,18 @@ export default {
   },
   methods: {
     async fetchConsommations() {
-      try {
-        const response = await apiClient.get('/api/consommations');
-        this.consommations = response.data;
-        this.totalCO2 = this.consommations.reduce((sum, item) => sum + item.co2, 0);
-      } catch (error) {
-        console.error('Erreur lors de la récupération des consommations:', error);
-      }
-    },
+  try {
+    const response = await apiClient.get('/consommations');  // Test avec une route plus simple
+    console.log(response.data);
+    this.consommations = response.data;
+  } catch (error) {
+    console.error('Erreur lors de la récupération des consommations:', error);
+  }
+}
+
   },
 };
+
 </script>
 
 <style scoped>
