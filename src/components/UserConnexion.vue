@@ -29,31 +29,31 @@ export default {
   },
   methods: {
    async loginUser() {
-  try {
-    const response = await apiClient.post('/users/login', {
-      username: this.username,
-      password: this.password,
-    });
+    try {
+      const response = await apiClient.post('/users/login', {
+        username: this.username,
+        password: this.password,
+      });
 
-    localStorage.setItem('auth-token', response.data.token);
+      localStorage.setItem('auth-token', response.data.token);
 
-      localStorage.setItem('user-id', response.data.id);
+        localStorage.setItem('user-id', response.data.id);
 
-    this.$router.push('/');
+      this.$router.push('/');
 
 
-    console.log(localStorage.getItem('auth-token')); 
-    console.log(localStorage.getItem('user-id'));
+      console.log(localStorage.getItem('auth-token')); 
+      console.log(localStorage.getItem('user-id'));
 
-  } catch (error) {
-    console.error('Erreur lors de la connexion', error);
-    if (error.response) {
-      alert(`Erreur API: ${error.response.data.message || 'Erreur inconnue'}`);
-    } else {
-      alert('Erreur réseau, vérifiez votre connexion');
+    } catch (error) {
+      console.error('Erreur lors de la connexion', error);
+      if (error.response) {
+        alert(`Erreur API: ${error.response.data.message || 'Erreur inconnue'}`);
+      } else {
+        alert('Erreur réseau, vérifiez votre connexion');
+      }
     }
   }
-}
 
   }
 };

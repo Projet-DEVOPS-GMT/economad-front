@@ -5,13 +5,13 @@
         <!-- Type de consommation -->
         <label for="type-consommation">Type de consommation</label>
         <select v-model="consommation.type" id="type-consommation" required>
-          <option value="Transport">Transport</option>
-          <option value="Hébergement">Hébergement</option>
-          <option value="Restauration">Restauration</option>
+          <option value="transport">Transport</option>
+          <option value="hebergement">Hébergement</option>
+          <option value="restauration">Restauration</option>
         </select>
   
         <!-- Type de transport, visible uniquement si Transport est sélectionné -->
-        <div v-if="consommation.type === 'Transport'">
+        <div v-if="consommation.type === 'transport'">
           <label for="type-transport">Type de transport</label>
           <select v-model="consommation.transportType" id="type-transport" required>
             <option value="Avion">Avion</option>
@@ -33,47 +33,90 @@
           </div>
         </div>
   
-        <!-- Ville, visible uniquement si Hébergement ou Restauration est sélectionné -->
-        <div v-if="consommation.type === 'Hébergement' || consommation.type === 'Restauration'">
+        <div v-if="consommation.type === 'hebergement' || consommation.type === 'restauration'">
           <label for="ville">Ville</label>
           <input type="text" v-model="consommation.ville" id="ville" placeholder="Entrez la ville" required />
         </div>
+
+        <div v-if="consommation.type === 'Restauration'">
+          <label for="type-restaurant">Type de Restaurant</label>
+          <select v-model="consommation.restaurantType" id="type-restaurant" required>
+            <option value="fastfod">Fast Food</option>
+            <option value="gastronomique">Restaurant Gastronomique</option>
+            <option value="classique">Restaurant Classique</option>
+            <option value="collective">Restauration Collective</option>
+          </select>
+
+          <label for="type-plat">Type de Plat</label>
+          <select v-model="consommation.restaurantType" id="type-restaurant" required>
+            <option value="fastfod">Viande</option>
+            <option value="gastronomique">Vegetarien</option>
+            <option value="classique">Poison</option>
+            
+          </select>
+        </div>
   
-        <!-- Montant -->
         <label for="montant-consommation">Montant de la consommation (€)</label>
-        <input type="number" v-model="consommation.montant" id="montant-consommation" required />
+        <input type="text" v-model="consommation.montant" id="montant-consommation" required />
   
-        <!-- Submit Button -->
         <button type="submit">Enregistrer</button>
       </form>
     </div>
   </template>
   
   <script>
+  import apiClient from '../apiClient';
   export default {
     data() {
       return {
         consommation: {
-          type: 'Transport', // Valeur par défaut
-          transportType: 'Avion', // Valeur par défaut pour transport
+          type: 'transport',
+          transportType: '',
           dateDepart: '',
           dateArrivee: '',
-          ville: '', 
-          montant: ''
+          ville: '',
+          restaurantType: '',
+          platType: '',
+          montant: 0
         }
       };
     },
     methods: {
-      enregistrerConsommation() {
-     console.log('Consommation enregistrée :', this.consommation);
-        
+      async enregistrerConsommation() {
+        try {
+          let route = '';
+          let data = {};
+
+       
+          const response = await apiClient.post('/consommations', {
+                type: this.consommation.type,
+                transportType: this.consommation.transportType,
+                dateDepart: this.consommation.dateDepart,
+                dateArrivee: this.consommation.dateArrivee,
+                montant: this.consommation.montant,
+              });
+          console.log(response);
+
+          // localStorage.setItem('user-id', response.data.id);
+
+          // this.$router.push('/');
+
+          // console.log(localStorage.getItem('user-id'));
+        } catch (error) {
+          console.error('Erreur lors de la connexion', error);
+          if (error.response) {
+            alert(`Erreur API: ${error.response.data.message || 'Erreur inconnue'}`);
+          } else {
+            alert('Erreur réseau, vérifiez votre connexion');
+          }
+        }
       }
     }
   };
   </script>
   
   <style scoped>
-  /* Styles pour l'interface du formulaire */
+
   .enregistrer-consommation {
     width: 100%;
     max-width: 600px;
@@ -106,7 +149,7 @@
     border-radius: 5px;
   }
   
-  
+
   .dates {
     display: flex;
     flex-direction: column;
