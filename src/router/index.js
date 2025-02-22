@@ -6,6 +6,8 @@ import Historique from '../views/Historique.vue'; // Vue de l'historique
 import EnregistrerConsommation from '../views/EnregistrerConsommation.vue'; // Vue pour l'enregistrement de la consommation
 import Recherche from '../views/Recherche.vue'; // Import de la vue Recherche
 import Profile from '../views/Profil.vue';
+import FaireScore from '../views/FaireScore.vue'; // Import de la vue FaireScore
+
 const routes = [
   {
     path: '/',
@@ -41,7 +43,12 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile, 
-  }
+  },
+  {
+    path: '/faire-score',
+    name: 'FaireScore',
+    component: FaireScore,
+  },
 ];
 
 const router = createRouter({

@@ -8,8 +8,8 @@
       <nav class="nav-bar">
         <router-link to="/login" class="nav-item">Se connecter</router-link>
         <router-link to="/register" class="nav-item">S'inscrire</router-link>
+        <router-link to="/faire-score" class="nav-item">Faire Score</router-link>
         <router-link to="/profile" class="nav-item">Mon profil</router-link>
-
         <div class="dropdown">
           <button class="dropbtn">Consommations</button>
           <div class="dropdown-content">
@@ -104,10 +104,9 @@ export default {
   align-items: center; 
 }
 
-
 .nav-item,
 .nav-link {
-  color: white ; 
+  color: white; 
   text-decoration: none; 
   font-weight: bold;
   padding: 5px 10px;
@@ -117,10 +116,9 @@ export default {
 
 .nav-item:hover,
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Effet de survol */
+  background-color: rgba(255, 255, 255, 0.2);
   color: white; 
 }
-
 
 /* Menu déroulant */
 .dropdown {
@@ -162,10 +160,6 @@ export default {
   text-decoration: none;
   display: block;
 }
-
-/* .nav-item:hover {
-  background-color: #ddd;
-} */
 
 /* Section principale */
 .main-section {
@@ -218,7 +212,6 @@ export default {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 .features-section {
   background-color: #ffffff;
