@@ -1,12 +1,12 @@
 <template>
-<header class="header">
+  <header class="header">
     <div class="logo">
       <img src="@/assets/logo.png" alt="ECONOMAD Logo" class="logo-img" />
       <span class="logo-text">ECONOMAD</span>
     </div>
     <nav class="nav-bar">
-      <router-link to="/faire-score" class="nav-item">Faire score</router-link>
       <router-link to="/profile" class="nav-item">Mon profil</router-link>
+      <router-link to="/login" class="nav-item">Mon compte</router-link>
       <div class="dropdown">
         <button class="dropbtn">Consommations</button>
         <div class="dropdown-content">
@@ -14,11 +14,12 @@
           <router-link to="/historique" class="nav-item">Afficher historique</router-link>
         </div>
       </div>
-
-      <router-link to="/login" class="nav-item">Mon compte </router-link>
+      <router-link to="/faire-score" class="nav-item">Faire score</router-link>
+      <router-link to="/seuil-annuel" class="nav-item">Seuil annuel CO2</router-link>
     </nav>
   </header>
 </template>
+
 
 
 <style scoped>

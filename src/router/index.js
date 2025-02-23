@@ -7,6 +7,7 @@ import EnregistrerConsommation from '../views/EnregistrerConsommation.vue'; // V
 import Recherche from '../views/Recherche.vue'; // Import de la vue Recherche
 import Profile from '../views/Profil.vue';
 import FaireScore from '../views/FaireScore.vue'; // Import de la vue FaireScore
+import Seuil from '../views/Seuil.vue';
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/faire-score',
     name: 'FaireScore',
     component: FaireScore,
+  },
+  {
+    path: '/seuil-annuel',
+    name: 'Seuil',
+    component: Seuil,
   },
 ];
 
