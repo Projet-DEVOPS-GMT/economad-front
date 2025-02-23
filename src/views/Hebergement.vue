@@ -87,7 +87,9 @@ export default {
 
 <style scoped>
 .hebergement-container {
-  margin: 20px;
+  text-align: center;
+  width: 100%;
+
 }
 
 .search-filters {
@@ -115,6 +117,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-around;
 }
 
 .hebergement-card {

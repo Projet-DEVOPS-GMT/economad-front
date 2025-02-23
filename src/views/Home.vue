@@ -21,13 +21,6 @@
       </div>
     </section>
 
-    <section class="search-section">
-      <div class="search-box">
-        <input type="text" placeholder="Où voulez-vous aller ?" />
-        <input type="date" />
-        <button class="search-btn">Rechercher</button>
-      </div>
-    </section>
 
     <!-- Ajout de la section d'hébergement -->
     <Hebergement />
@@ -226,7 +219,7 @@ export default {
 }
 
 .search-btn {
-  background-color: #004d40;
+  background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;

@@ -6,7 +6,7 @@
     </div>
     <nav class="nav-bar">
       <router-link to="/faire-score" class="nav-item">Faire score</router-link>
-      <router-link to="/profile" class="nav-item">Mon profil</router-link>
+     
       <div class="dropdown">
         <button class="dropbtn">Consommations</button>
         <div class="dropdown-content">
@@ -14,7 +14,9 @@
           <router-link to="/historique" class="nav-item">Afficher historique</router-link>
         </div>
       </div>
-
+      <router-link to="" class="nav-item">A propos</router-link>
+      <router-link to="/profile" class="nav-item">Profil</router-link>
+    
       <router-link to="/login" class="nav-item">Mon compte </router-link>
     </nav>
   </header>
