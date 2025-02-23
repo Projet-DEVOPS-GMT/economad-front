@@ -1,5 +1,7 @@
 
 <template>
+    
+    <Header></Header>
     <div class="profile-container">
       <h1>Profil de l'utilisateur</h1>
       <div v-if="user">
@@ -12,12 +14,20 @@
       </div>
       <button @click="logoutUser" class="logout-button">Se déconnecter</button>
     </div>
+
+    <Footer></Footer>
   </template>
   
   <script>
   import apiClient from '../apiClient';
-  
+  import Footer from '../components/footer.vue';
+  import Header from '../components/Header.vue';
+
   export default {
+    components: {
+      Footer,
+      Header
+    },
     data() {
       return {
         user: null, // Contient les informations de l'utilisateur
@@ -56,6 +66,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -74,7 +85,7 @@
   
   .logout-button {
     padding: 10px 20px;
-    background-color: #e74c3c;
+    background-color: #27ae60;
     color: white;
     border: none;
     border-radius: 5px;

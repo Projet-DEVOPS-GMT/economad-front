@@ -1,26 +1,8 @@
 <template>
   <div class="home">
-    <header class="header">
-      <div class="logo">
-        <img src="@/assets/logo.png" alt="ECONOMAD Logo" class="logo-img" />
-        <span class="logo-text">ECONOMAD</span>
-      </div>
-      <nav class="nav-bar">
-        <router-link to="/login" class="nav-item">Se connecter</router-link>
-        <router-link to="/register" class="nav-item">S'inscrire</router-link>
-        <router-link to="/faire-score" class="nav-item">Faire Score</router-link>
-        <router-link to="/profile" class="nav-item">Mon profil</router-link>
-        <div class="dropdown">
-          <button class="dropbtn">Consommations</button>
-          <div class="dropdown-content">
-            <router-link to="/enregistrer-consommation" class="nav-item">Enregistrer une consommation</router-link>
-            <router-link to="/historique" class="nav-item">Afficher historique</router-link>
-          </div>
-        </div>
-      </nav>
-    </header>
+   <Header></Header>
 
-    <section class="main-section">
+    <!-- <section class="main-section">
       <div class="main-content">
         <h1>Bienvenue sur <span class="highlight">ECONOMAD</span></h1>
         <p>Explorez des voyages low-cost, tout en réduisant votre empreinte carbone.</p>
@@ -28,6 +10,22 @@
       </div>
       <div class="main-image">
         <img src="@/assets/image4.png" alt="Voyage éco-responsable" />
+      </div>
+    </section> -->
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Bienvenue sur <span class="highlight">ECONOMAD</span></h1>
+        <p>Explorez des voyages low-cost tout en réduisant votre empreinte carbone.</p>
+        <router-link to="/recherche" class="btn-primary">Rechercher voyage</router-link>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <div class="search-box">
+        <input type="text" placeholder="Où voulez-vous aller ?" />
+        <input type="date" />
+        <button class="search-btn">Rechercher</button>
       </div>
     </section>
 
@@ -55,111 +53,26 @@
       </div>
     </section>
   </div>
+  <Footer></Footer>
 </template>
 
 <script>
 import Hebergement from './Hebergement.vue';
+import Header from '../components/Header.vue';
+import Footer from '../components/footer.vue';
 
 export default {
+ 
   name: 'Home',
   components: {
-    Hebergement
+    Hebergement,
+    Header,
+    Footer
   }
 };
 </script>
 
 <style scoped>
-/* En-tête */
-.header {
-  background-color: #4CAF50;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-}
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.nav-bar {
-  display: flex;
-  align-items: center; 
-}
-
-.nav-item,
-.nav-link {
-  color: white; 
-  text-decoration: none; 
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease; 
-}
-
-.nav-item:hover,
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white; 
-}
-
-/* Menu déroulant */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #45a049;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #45a049;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 8px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.nav-item {
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
 
 /* Section principale */
 .main-section {
@@ -283,5 +196,40 @@ export default {
 
 .btn-secondary:hover {
   background-color: #555;
+}
+
+
+
+.hero {
+  background: url('@/assets/image5.webp') no-repeat center center/cover;
+  border-bottom-left-radius: 50% 20px;
+  border-bottom-right-radius: 50% 20px;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+}
+
+.search-section {
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-btn {
+  background-color: #004d40;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 </style>

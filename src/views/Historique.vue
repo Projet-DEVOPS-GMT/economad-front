@@ -1,4 +1,5 @@
 <template>
+    <Header></Header>
   <div class="historique-container">
   <!-- Header Section with Image -->
   <div class="historique-header-section">
@@ -33,13 +34,19 @@
     <p>Aucune consommation enregistrée.</p>
   </div>
 </div>
+<Footer></Footer>
 
 </template>
 
 <script>
 import apiClient from '../apiClient';
-
+import Footer from '../components/footer.vue';
+import Header from '../components/Header.vue';
 export default {
+  components: {
+    Footer,
+    Header
+  },
   data() {
     return {
       consommations: [],

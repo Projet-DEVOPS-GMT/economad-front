@@ -1,4 +1,5 @@
 <template>
+    <Header></Header>
     <div class="enregistrer-consommation">
       <h1>Enregistrer une consommation</h1>
       <form @submit.prevent="enregistrerConsommation">
@@ -62,11 +63,21 @@
         <button type="submit">Enregistrer</button>
       </form>
     </div>
+
+    <Footer></Footer>
   </template>
   
   <script>
   import apiClient from '../apiClient';
+  import Footer from '../components/footer.vue';
+  import Header from '../components/Header.vue';
+
   export default {
+    components: {
+      Footer,
+      Header
+    },
+
     data() {
       return {
         consommation: {
