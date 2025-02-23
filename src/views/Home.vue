@@ -34,6 +34,13 @@
     <!-- Ajout de la section d'hébergement -->
     <Hebergement />
 
+    <!-- Section Actions écologiques -->
+    <section class="eco-action-section">
+      <h2>Agissez pour la planète</h2>
+      <p>Enregistrez vos actions écologiques et suivez votre impact CO2.</p>
+      <router-link to="/eco-action" class="btn-secondary">Voir et enregistrer mes actions</router-link>
+    </section>
+
     <section class="features-section">
       <h2>Pourquoi choisir ECONOMAD ?</h2>
       <div class="features">
@@ -101,23 +108,23 @@ export default {
 
 .nav-bar {
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .nav-item,
 .nav-link {
-  color: white; 
-  text-decoration: none; 
+  color: white;
+  text-decoration: none;
   font-weight: bold;
   padding: 5px 10px;
   border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease; 
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-item:hover,
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  color: white; 
+  color: white;
 }
 
 /* Menu déroulant */
@@ -211,6 +218,37 @@ export default {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Section d'actions écologiques */
+.eco-action-section {
+  background-color: #e8f7e6;
+  padding: 20px;
+  text-align: center;
+}
+
+.eco-action-section h2 {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+
+.eco-action-section p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
 }
 
 .features-section {
