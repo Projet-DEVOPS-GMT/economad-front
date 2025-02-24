@@ -8,6 +8,8 @@ import Recherche from '../views/Recherche.vue'; // Import de la vue Recherche
 import Profile from '../views/Profil.vue';
 import FaireScore from '../views/FaireScore.vue'; // Import de la vue FaireScore
 import Seuil from '../views/Seuil.vue';
+import EcoAction from '../views/EcoAction.vue'; // Import de la vue EcoAction
+
 
 const routes = [
   {
@@ -43,12 +45,17 @@ const routes = [
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile, 
+    component: Profile, // Profil utilisateur
   },
   {
     path: '/faire-score',
     name: 'FaireScore',
-    component: FaireScore,
+    component: FaireScore, // Vue pour le Faire Score
+  },
+  {
+    path: '/eco-action',
+    name: 'EcoAction',
+    component: EcoAction, // Vue pour enregistrer et visualiser les actions écologiques
   },
   {
     path: '/seuil-annuel',
