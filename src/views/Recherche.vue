@@ -1,4 +1,13 @@
 <template>
+  <Header></Header>
+  <section class="hero">
+      <div class="hero-content">
+        <h1>Bienvenue sur <span class="highlight">ECONOMAD</span></h1>
+        <p>Explorez des voyages low-cost tout en réduisant votre empreinte carbone.</p>
+        <router-link to="/recherche" class="btn-primary">Rechercher voyage</router-link>
+      </div>
+    </section>
+
   <div class="recherche-container">
     <h1>Rechercher un voyage</h1>
 
@@ -48,12 +57,21 @@
       </div>
     </div>
   </div>
+
+  <Footer></Footer>
 </template>
 
 <script>
 import apiClient from '../apiClient';  // Assurez-vous que le chemin d'importation est correct
+import Footer from '../components/footer.vue';
+  import Header from '../components/Header.vue';
 
-export default {
+  export default {
+    components: {
+      Footer,
+      Header
+    },
+
   data() {
     return {
       villeDepart: '',
@@ -192,4 +210,19 @@ button:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
+
+.hero {
+  background: url('@/assets/image5.webp') no-repeat center center/cover;
+  border-bottom-left-radius: 50% 20px;
+  border-bottom-right-radius: 50% 20px;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+}
+
 </style>
