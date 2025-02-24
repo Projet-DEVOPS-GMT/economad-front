@@ -1,6 +1,5 @@
 
 <template>
-    
     <Header></Header>
     <div class="profile-container">
       <h1>Profil de l'utilisateur</h1>

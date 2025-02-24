@@ -1,7 +1,8 @@
 <template>
+    <Header></Header>
     <div class="container">
       <!-- 🏞️ En-tête avec image -->
-      <header class="header">
+      <header class="card-header">
         <img :src="headerImage" alt="Nature écologique" class="header-img" />
         <h1>🌿 Définissez Votre Seuil Annuel de CO₂ 🌍</h1>
       </header>
@@ -47,10 +48,19 @@
         </ul>
       </div>
     </div>
+
+    <Footer></Footer>
   </template>
   
   <script>
+ import Footer from '../components/footer.vue';
+ import Header from '../components/Header.vue';
+
   export default {
+    components: {
+      Footer,
+      Header
+    },
     data() {
       return {
         co2Threshold: null,
@@ -100,10 +110,12 @@
     background-color: #f0f8ff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   
   /* 🏞️ En-tête */
-  .header {
+  .card-header {
     text-align: center;
     background-color: #ffffff;
     padding: 20px;
