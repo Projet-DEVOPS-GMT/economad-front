@@ -1,4 +1,5 @@
 <template>
+  <Header></Header>
   <div class="eco-action-wrapper">
     <div class="eco-action-container" v-if="isAuthenticated">
       <h2><span class="emoji">🌍</span> Actions écologiques</h2>
@@ -34,12 +35,20 @@
       <p>Veuillez vous connecter pour enregistrer vos actions écologiques.</p>
     </div>
   </div>
+
+  <Footer></Footer>
 </template>
 
 <script>
 import apiClient from '@/apiClient';
 
+import Footer from '../components/footer.vue';
+import Header from '../components/Header.vue';
 export default {
+  components: {
+    Footer,
+    Header
+  },
   data() {
     return {
       description: '',
@@ -109,7 +118,7 @@ export default {
 
 .eco-action-wrapper {
   min-height: 100vh;
-  background: linear-gradient(135deg, #2db906 0%, #e8f5e9 100%);
+  background: linear-gradient(135deg, #90c183 0%, #e8f5e9 100%);
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
@@ -160,7 +169,7 @@ export default {
 }
 
 .input-group input {
-  width: 100%;
+  width: 92%;
   padding: 12px 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
