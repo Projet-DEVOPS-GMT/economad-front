@@ -54,10 +54,11 @@
 <script>
 import apiClient from "../apiClient";
 import Footer from '../components/footer.vue';
-
+import Header from '../components/Header.vue';
 export default {
   components: {
     Footer,
+    Header
   },
   data() {
     return {

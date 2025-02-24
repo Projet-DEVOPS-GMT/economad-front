@@ -2,9 +2,9 @@
   <Header></Header>
   <section class="hero">
       <div class="hero-content">
-        <h1>Bienvenue sur <span class="highlight">ECONOMAD</span></h1>
+        <h1><span class="welcom" >Bienvenue sur </span><span class="highlight">ECONOMAD</span></h1>
         <p>Explorez des voyages low-cost tout en réduisant votre empreinte carbone.</p>
-        <router-link to="/recherche" class="btn-primary">Rechercher voyage</router-link>
+      
       </div>
     </section>
 
@@ -196,6 +196,10 @@ button:hover {
   gap: 1.5rem;
 }
 
+.welcom{
+  color: white;
+}
+
 .transport-card {
   background: #f9f9f9;
   border: 1px solid #ddd;
@@ -223,6 +227,167 @@ button:hover {
 
 .hero-content h1 {
   font-size: 3rem;
+}
+
+
+
+/* Section principale */
+.main-section {
+  text-align: center;
+  background-color: #f3f3f3;
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content {
+  max-width: 500px;
+  margin: 20px;
+}
+
+.main-content h1 {
+  font-size: 3rem;
+  color: #333;
+}
+
+.highlight {
+  color: #4CAF50;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 20px 0;
+}
+
+.btn-primary {
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.main-image img {
+  max-width: 40%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.features-section {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature {
+  max-width: 300px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.feature-icon {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Section de boutons */
+.cta-section {
+  background-color: #f3f3f3;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
+}
+
+
+
+.hero {
+  background: url('@/assets/image5.webp') no-repeat center center/cover;
+  border-bottom-left-radius: 50% 20px;
+  border-bottom-right-radius: 50% 20px;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+}
+
+.search-section {
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 
 </style>

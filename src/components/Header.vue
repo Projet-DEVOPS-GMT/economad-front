@@ -1,13 +1,24 @@
 <template>
   <header class="header">
+    <router-link to="/" style="text-decoration: none; ">
     <div class="logo">
       <img src="@/assets/logo.png" alt="ECONOMAD Logo" class="logo-img" />
-      <span class="logo-text">ECONOMAD</span>
+      <span class="logo-text" style="color: white;">ECONOMAD</span>
     </div>
+  </router-link>
     <nav class="nav-bar">
-      <router-link to="/profile" class="nav-item">Mon profil</router-link>
-      <router-link to="/login" class="nav-item">Mon compte</router-link>
+
       <div class="dropdown">
+        <button class="dropbtn">Mon compte</button>
+        <div class="dropdown-content">
+          <router-link to="/login" class="nav-item">Se connecter</router-link>
+          <router-link v-show="isAuthenticated" to="/profile" class="nav-item">Mon profil</router-link>
+          <router-link  v-show="isAuthenticated"to="/historique" class="nav-item">Historiques de consommation</router-link>
+          <router-link  v-show="isAuthenticated" to="/" @click="logoutUser"  class="nav-item">Se deconnecter</router-link>
+        </div>
+      </div>
+      
+      <div class="dropdown"  v-show="isAuthenticated">
         <button class="dropbtn">Consommations</button>
         <div class="dropdown-content">
           <router-link to="/enregistrer-consommation" class="nav-item">Enregistrer une consommation</router-link>
@@ -20,7 +31,47 @@
   </header>
 </template>
 
+<script>
+import apiClient from '../apiClient';
 
+export default {
+  
+  data() {
+    return {
+      user: null, 
+      isAuthenticated: false
+    };
+  },
+  created() {
+      const auth = localStorage.getItem('user-id'); 
+      if (auth) {
+        this.isAuthenticated = true;  
+      }
+    },
+  methods: {
+    // async fetchUserProfile() {
+    //   try {
+    //     const userId = localStorage.getItem('user-id'); // Récupérer l'ID de l'utilisateur depuis localStorage
+    //     const response = await apiClient.get(`/users/${userId}`, {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem('auth-token')}`,
+    //       },
+    //     });
+    //     this.user = response.data; // Stocker les données de l'utilisateur
+    //   } catch (error) {
+    //     console.error('Erreur lors de la récupération des informations utilisateur :', error);
+    //     alert("Impossible de charger le profil de l'utilisateur.");
+    //   }
+    // },
+    logoutUser() {
+      localStorage.removeItem('auth-token');
+      localStorage.removeItem('user-id');
+      this.$router.push('/login');
+    },
+  },
+ 
+};
+</script>
 
 <style scoped>
 
