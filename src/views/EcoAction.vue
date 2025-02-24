@@ -49,12 +49,13 @@
           description: this.description,
           co2Saved: this.co2Saved,
           dateAction: new Date(),
-          idUser: this.userId, // Utiliser l'ID de l'utilisateur authentifié
+          user: { id: this.userId }, 
         };
   
         try {
+          console.log(ecoAction);
           await apiClient.post('/eco-actions', ecoAction);
-          this.getEcoActions(); // Actualiser la liste des actions après l'enregistrement
+          this.getEcoActions();
         } catch (error) {
           console.error("Erreur lors de l'enregistrement de l'action", error);
         }
@@ -73,11 +74,10 @@
     },
     created() {
       // Vérifier si l'utilisateur est connecté
-      const token = localStorage.getItem('authToken'); // Remplacer par le token JWT si nécessaire
+      const token = localStorage.getItem('user-id'); // Remplacer par le token JWT si nécessaire
       if (token) {
         this.isAuthenticated = true;
-        // Récupérer l'ID de l'utilisateur à partir du token ou du stockage local
-        this.userId = localStorage.getItem('userId'); // Remplacer par la méthode pour obtenir l'ID de l'utilisateur
+        this.userId = localStorage.getItem('user-id'); // Remplacer par la méthode pour obtenir l'ID de l'utilisateur
         this.getEcoActions(); // Charger les actions dès que l'utilisateur est connecté
       }
     }
