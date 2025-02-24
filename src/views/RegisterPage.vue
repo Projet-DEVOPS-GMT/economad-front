@@ -1,26 +1,6 @@
 <template>
-  <header class="header">
-      <div class="logo">
-        <img src="@/assets/logo.png" alt="ECONOMAD Logo" class="logo-img" />
-        <span class="logo-text">ECONOMAD</span>
-      </div>
-      <nav class="nav-bar">
-        <router-link to="/faire-score" class="nav-item">Faire score</router-link>
-        <router-link to="/profile" class="nav-item">Mon profil</router-link>
-        <div class="dropdown">
-          <button class="dropbtn">Consommations</button>
-          <div class="dropdown-content">
-            <router-link to="/enregistrer-consommation" class="nav-item">Enregistrer une consommation</router-link>
-            <router-link to="/historique" class="nav-item">Afficher historique</router-link>
-          </div>
-        </div>
-
-        <router-link to="/login" class="nav-item">Mon compte </router-link>
-      </nav>
-    </header>
+  <header></header>
   <div class="register-page">
-    
-
     <div class="background-overlay">
       <p class="title">
         Nous contribuons à un tourisme plus responsable, positif et joyeux.
@@ -58,10 +38,12 @@
 <script>
 import apiClient from '../apiClient';
 import Footer from '../components/footer.vue';
+import Header from '../components/Header.vue';
 
 export default {
   components: {
     Footer,
+    Header
   },
   data() {
     return {

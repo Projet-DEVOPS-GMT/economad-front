@@ -110,7 +110,7 @@
 
           // localStorage.setItem('user-id', response.data.id);
 
-          // this.$router.push('/');
+           this.$router.push('/historique');
 
           // console.log(localStorage.getItem('user-id'));
         } catch (error) {

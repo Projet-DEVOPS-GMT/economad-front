@@ -25,6 +25,13 @@
     <!-- Ajout de la section d'hébergement -->
     <Hebergement />
 
+    <!-- Section Actions écologiques -->
+    <section class="eco-action-section">
+      <h2>Agissez pour la planète</h2>
+      <p>Enregistrez vos actions écologiques et suivez votre impact CO2.</p>
+      <router-link to="/eco-action" class="btn-secondary">Voir et enregistrer mes actions</router-link>
+    </section>
+
     <section class="features-section">
       <h2>Pourquoi choisir ECONOMAD ?</h2>
       <div class="features">
@@ -66,6 +73,99 @@ export default {
 </script>
 
 <style scoped>
+
+/* En-tête */
+.header {
+  background-color: #4CAF50;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item,
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-item:hover,
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Menu déroulant */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #45a049;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #45a049;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-item {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
 
 /* Section principale */
 .main-section {
@@ -117,6 +217,37 @@ export default {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Section d'actions écologiques */
+.eco-action-section {
+  background-color: #e8f7e6;
+  padding: 20px;
+  text-align: center;
+}
+
+.eco-action-section h2 {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+
+.eco-action-section p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
 }
 
 .features-section {

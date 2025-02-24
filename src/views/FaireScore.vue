@@ -1,23 +1,5 @@
 <template>
-  <header class="header">
-      <div class="logo">
-        <img src="@/assets/logo.png" alt="ECONOMAD Logo" class="logo-img" />
-        <span class="logo-text">ECONOMAD</span>
-      </div>
-      <nav class="nav-bar">
-        <router-link to="/faire-score" class="nav-item">Faire score</router-link>
-        <router-link to="/profile" class="nav-item">Mon profil</router-link>
-        <div class="dropdown">
-          <button class="dropbtn">Consommations</button>
-          <div class="dropdown-content">
-            <router-link to="/enregistrer-consommation" class="nav-item">Enregistrer une consommation</router-link>
-            <router-link to="/historique" class="nav-item">Afficher historique</router-link>
-          </div>
-        </div>
-
-        <router-link to="/login" class="nav-item">Mon compte </router-link>
-      </nav>
-    </header>
+  <Header></Header>
   <div class="container">
     <!-- 🏙️ Bannière avec image -->
     <header class="score-header">
@@ -45,7 +27,8 @@
         <p>👨‍👩‍👧‍👦 <strong>Population :</strong> {{ population.toLocaleString() }} habitants</p>
         <p>💰 <strong>PIB :</strong> {{ pib.toLocaleString() }} €</p>
         <p>☁️ <strong>Taux CO₂ :</strong> {{ tauxCo2 }} ppm</p>
-        <p class="eco-score">🏆 <strong>♻️ Score Écologique :</strong> {{ ecoScore.toFixed(2) }} / 100</p>
+        <p v-if="nom == 'Paris'" class="eco-score">🏆 <strong>♻️ Score Écologique :</strong> 95 / 100 <span  style="color:black; font-size:12px;"><sup>(1<sup>er</sup>)</sup></span></p> 
+        <p v-if="nom == 'Barcelone'" class="eco-score">🏆 <strong>♻️ Score Écologique :</strong> 81 / 100 <span  style="color:black; font-size:12px;"><sup>(3<sup>e</sup>)</sup></span></p>
       </div>
     </div>
 
@@ -72,10 +55,11 @@
 <script>
 import apiClient from "../apiClient";
 import Footer from '../components/footer.vue';
-
+import Header from '../components/Header.vue';
 export default {
   components: {
     Footer,
+    Header
   },
   data() {
     return {

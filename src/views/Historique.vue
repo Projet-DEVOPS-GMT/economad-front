@@ -1,47 +1,47 @@
-<template>
-    <Header></Header>
+<template> 
+  <Header></Header>
   <div class="historique-container">
-  <!-- Header Section with Image -->
-  <div class="historique-header-section">
-    <img src="@/assets/easy-booking.png" alt="Historique" class="header-image" />
-    <div class="header-text">
-      <h1>Historique des consommations</h1>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <div v-if="consommations.length" class="historique-content">
-    <div class="historique-cards">
-      <!-- Display each consumption as a card -->
-      <div class="historique-card" v-for="item in consommations" :key="item.id">
-        <div class="card-header">
-          <h3>{{ item.type }} - {{ item.ville }}</h3>
-          <p class="card-dates">{{ item.dateDepart }} - {{ item.dateArrivee }}</p>
-        </div>
-        <div class="card-body">
-          <p><strong>Montant:</strong> {{ item.montant }} €</p>
-          <p><strong>Émissions CO₂:</strong> {{ item.co2 }} kg</p> <!-- Affichage de l'émission CO₂ -->
-        </div>
+    <!-- Header Section with Image -->
+    <div class="historique-header-section">
+      <img src="@/assets/easy-booking.png" alt="Historique" class="header-image" />
+      <div class="header-text">
+        <h1>Historique des consommations</h1>
       </div>
     </div>
 
-    <div class="total-emissions">
-      <h3>Total des émissions CO₂ : {{ totalCO2 }} kg</h3>
+    <!-- Main Content -->
+    <div v-if="consommations.length" class="historique-content">
+      <div class="historique-cards">
+        <!-- Display each consumption as a card -->
+        <div class="historique-card" v-for="item in consommations" :key="item.id">
+          <div class="card-header">
+            <h3>{{ item.type.charAt(0).toUpperCase() + item.type.slice(1)}}  {{ item.ville }}</h3>
+            <p class="card-dates" v-if="item.type === 'transport'">Date depart: {{ item.dateDepart}} <br>Date arrivée: {{ item.dateArrivee }}</p>
+          </div>
+          <div class="card-body">
+            <p><strong>Montant:</strong> {{ item.montant }} €</p>
+            <p><strong>Émissions CO₂:</strong> {{ formatCO2(item.co2) }} kg</p> 
+          </div>
+        </div>
+      </div>
+
+      <div class="total-emissions">
+        <h3>Total des émissions CO₂ : {{ formatCO2(consommations.reduce((sum, item) => sum + parseFloat(item.co2), 0)) }} kg</h3>
+      </div>
+    </div>
+
+    <div v-else class="no-consommations">
+      <p>Aucune consommation enregistrée.</p>
     </div>
   </div>
-
-  <div v-else class="no-consommations">
-    <p>Aucune consommation enregistrée.</p>
-  </div>
-</div>
-<Footer></Footer>
-
+  <Footer></Footer>
 </template>
 
 <script>
 import apiClient from '../apiClient';
 import Footer from '../components/footer.vue';
 import Header from '../components/Header.vue';
+
 export default {
   components: {
     Footer,
@@ -50,7 +50,6 @@ export default {
   data() {
     return {
       consommations: [],
-      totalCO2: 0,
     };
   },
   mounted() {
@@ -58,18 +57,20 @@ export default {
   },
   methods: {
     async fetchConsommations() {
-  try {
-    const response = await apiClient.get('/consommations');  // Test avec une route plus simple
-    console.log(response.data);
-    this.consommations = response.data;
-  } catch (error) {
-    console.error('Erreur lors de la récupération des consommations:', error);
+      try {
+        const response = await apiClient.get('/consommations');
+        console.log(response.data);
+        this.consommations = response.data;
+      } catch (error) {
+        console.error('Erreur lors de la récupération des consommations:', error);
+      }
+    },
+   
+    formatCO2(value) {
+      return parseFloat(value).toFixed(2); // Arrondi à 2 chiffres après la virgule
+    }
   }
-}
-
-  },
 };
-
 </script>
 
 <style scoped>
@@ -146,7 +147,6 @@ export default {
 .card-dates {
   color: #777;
   font-size: 0.95rem;
-  margin-top: 0.5rem;
 }
 
 .card-body {
