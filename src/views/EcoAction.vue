@@ -1,4 +1,5 @@
 <template>
+    <Header></Header>
     <div class="eco-action-container" v-if="isAuthenticated">
       <h2>Actions écologiques</h2>
   
@@ -23,12 +24,21 @@
     <div v-else>
       <p>Veuillez vous connecter pour enregistrer vos actions écologiques.</p>
     </div>
+
+    <Footer></Footer>
   </template>
   
   <script>
   import apiClient from '@/apiClient';
   
+  import Footer from '../components/footer.vue';
+  import Header from '../components/Header.vue';
+
   export default {
+    components: {
+      Footer,
+      Header
+    },
     data() {
       return {
         description: '',
@@ -53,7 +63,6 @@
         };
   
         try {
-          console.log(ecoAction);
           await apiClient.post('/eco-actions', ecoAction);
           this.getEcoActions();
         } catch (error) {
